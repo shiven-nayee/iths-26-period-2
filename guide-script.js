@@ -19,7 +19,7 @@ function switchPlayer() {
 
 function playTurn(event) {
   const square = event.target;
-  if (square.textContent === '') {
+  if (square.textContent === 'X') {
     square.textContent = currentPlayer;
     switchPlayer();
   }
