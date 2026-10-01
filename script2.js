@@ -27,6 +27,17 @@ function changeToO() {
   currentPlayer.textContent = 'X';
 }
 
+// Change SquareValue, depending on what's inside
+// function changeSquareValue(event) {
+//   let square = event.target;
+//   let squareValue = square.textContent;
+//   if (squareValue === 'X') {
+//     changeToO();
+//   } else {
+//     changeToX();
+//   }
+// }
+//
 function changeSquare(event) {
   console.log('Click event:', event)
   const square = event.target;
@@ -36,6 +47,9 @@ function changeSquare(event) {
 
 // Event Listeners
 resetButton.addEventListener('click', count);
+// squares.addEventListener('click', changeSquareValue);
+
+
 
 for (const square of squares) {
   square.addEventListener('click', changeSquare)
