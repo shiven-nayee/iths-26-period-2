@@ -3,6 +3,15 @@ const resetButton = document.querySelector('#reset');
 const currentPlayer = document.querySelector('#current-player');
 const squares = document.querySelectorAll('.square');
 
+// Arrays
+// How do we create an array?
+// Create a const called winningLines: an array that holds all 8 ways to win.
+// Each way to win is its own array of 3 square numbers. The board is numbered:
+//   0 | 1 | 2
+//   3 | 4 | 5
+//   6 | 7 | 8
+// The top row is [0, 1, 2]. Find the other 7 (3 rows, 3 columns, 2 diagonals).
+
 // How can we simplify the code by only using the current player?
   // Check the current player
   // if the current player is X
@@ -25,14 +34,23 @@ function playTurn(event) {
 
   // If the square text content is empty the play the current player
     // SET THE CLICKED SQUARE's TEXT CONTENT TO CURRENT PLAYER
-  if (square.textContent === '') {
+  if (square.textContent === "") {
     square.textContent = currentPlayer.textContent;
+    switchPlayer();
   }
-    // Use the switch player function
-  switchPlayer()
+
+  // Check the winner first by calling checkWinner before switching the player
   console.log(switchPlayer)
   console.log(currentPlayer)
 }
+
+// Create a function called checkWinner
+  // FOR EACH line of winningLines
+    // first  = the textContent of the square at line[0]   (hint: squares[line[0]])
+    // second = the textContent of the square at line[1]
+    // third  = the textContent of the square at line[2]
+    // IF first is NOT empty AND first equals second AND first equals third
+      // log first + ' wins!' to the console
 
 // Event Listeners
 for (const square of squares) {
