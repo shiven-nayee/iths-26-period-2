@@ -11,6 +11,16 @@ const squares = document.querySelectorAll('.square');
 //   3 | 4 | 5
 //   6 | 7 | 8
 // The top row is [0, 1, 2]. Find the other 7 (3 rows, 3 columns, 2 diagonals).
+const winningLines = [
+  [0, 1, 2],
+  [2, 4, 6],
+  [0, 4, 8],
+  [1, 4, 7],
+  [6, 7, 8],
+  [3, 4, 5],
+  [0, 3, 8],
+  [2, 5, 8],
+]
 
 // How can we simplify the code by only using the current player?
   // Check the current player
@@ -36,10 +46,11 @@ function playTurn(event) {
     // SET THE CLICKED SQUARE's TEXT CONTENT TO CURRENT PLAYER
   if (square.textContent === "") {
     square.textContent = currentPlayer.textContent;
+  // Check the winner first by calling checkWinner before switching the player
+    checkWinner();
     switchPlayer();
   }
 
-  // Check the winner first by calling checkWinner before switching the player
   console.log(switchPlayer)
   console.log(currentPlayer)
 }
@@ -51,6 +62,17 @@ function playTurn(event) {
     // third  = the textContent of the square at line[2]
     // IF first is NOT empty AND first equals second AND first equals third
       // log first + ' wins!' to the console
+
+function checkWinner() {
+  for (const line of winningLines) {
+    const first = squares[line[0]].textContent;
+    const second = squares[line[1]].textContent;
+    const third = squares[line[2]].textContent;
+    if (first !== '' && first === second && first === third) {
+      console.log(first + 'wins!');
+    }
+  }
+}
 
 // Event Listeners
 for (const square of squares) {
